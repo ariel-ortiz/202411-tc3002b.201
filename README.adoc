@@ -1,0 +1,25 @@
+= Tc3002b.201 Desarrollo de aplicaciones avanzadas de ciencias computacionales
+
+== Módulo: Compiladores
+
+_Tecnológico de Monterrey, Estado de México._
+
+Este proyecto contiene todos los archivos fuente que el profesor irá generando en clase durante el semestre febrero-junio de 2024.
+
+Los archivos se pueden consultar directamente en este mismo sitio, o se puede usar `git` para obtener una copia local de estos. En este último caso se deben seguir los siguiente pasos:
+
+1. http://git-scm.com/downloads[Instalar git] en tu computadora.
+
+2. Clonar este repositorio. Desde la terminal, teclear:
+    
+    git clone https://github.com/ariel-ortiz/202411-tc3002b.201.git tc3002b
+    
+3. Cambiarse al directorio `tc3002b`:
+    
+    cd tc3002b
++    
+En dicho directorio encontrás todos los archivos fuente del proyecto.
+    
+4. Cada vez que el profesor realice modificaciones a archivos existentes o agregue archivos nuevos, será necesario hacer un *pull* al repositorio. En la terminal y desde el directorio `tc3002b` teclear: 
+    
+    git pull
