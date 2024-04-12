@@ -39,7 +39,7 @@ class Compiler:
         def create_parser():
             with open(self.__peg_file) as file:
                 grammar = file.read()
-            return ParserPEG(grammar, self.__root_rule)
+            return ParserPEG(grammar, self.__root_rule, 'comments')
 
         def syntax_analysis():
             try:

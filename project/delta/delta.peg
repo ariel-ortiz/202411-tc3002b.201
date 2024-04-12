@@ -1,3 +1,4 @@
+comments = r'[/][/].*|[/][*](.|\n)*?[*][/]'
 program = expression EOF
 expression = primary (('+' / '-') primary)*
 primary = decimal / boolean
