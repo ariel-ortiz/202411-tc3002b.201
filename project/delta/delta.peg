@@ -1,4 +1,5 @@
 program = expression EOF
-expression = decimal / boolean
+expression = primary (('+' / '-') primary)*
+primary = decimal / boolean
 decimal = r'\d+'
 boolean = 'true' / 'false'

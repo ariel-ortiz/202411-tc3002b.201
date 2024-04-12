@@ -20,7 +20,15 @@ class CodeGenerationVisitor(PTNodeVisitor):
         return CodeGenerationVisitor.WAT_TEMPLATE.format(children[0])
 
     def visit_expression(self, node, children):
-        return children[0]
+        result = [children[0]]
+        for i in range(1, len(children), 2):
+            result.append(children[i + 1])
+            match children[i]:
+                case '+':
+                    result.append('    i32.add\n')
+                case '-':
+                    result.append('    i32.sub\n')
+        return ''.join(result)
 
     def visit_decimal(self, node, children):
         return f'    i32.const { node.value }\n'
