@@ -30,6 +30,19 @@ class CodeGenerationVisitor(PTNodeVisitor):
                     result.append('    i32.sub\n')
         return ''.join(result)
 
+    def visit_multiplicative(self, node, children):
+        result = [children[0]]
+        for i in range(1, len(children), 2):
+            result.append(children[i + 1])
+            match children[i]:
+                case '*':
+                    result.append('    i32.mul\n')
+                case '/':
+                    result.append('    i32.div_s\n')
+                case '%':
+                    result.append('    i32.rem_s\n')
+        return ''.join(result)
+
     def visit_decimal(self, node, children):
         return f'    i32.const { node.value }\n'
 
