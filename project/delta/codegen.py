@@ -54,3 +54,19 @@ class CodeGenerationVisitor(PTNodeVisitor):
 
     def visit_parenthesis(self, node, children):
         return children[0]
+
+    def visit_unary(self, node, children):
+        result = children[-1]
+        for op in children[-2::-1]:
+            match op:
+                case '+':
+                    ... # do nothing
+                case '-':
+                    result = (
+                        '    i32.const 0\n'
+                        + result
+                        + '    i32.sub\n'
+                    )
+                case '!':
+                    result += '    i32.eqz\n'
+        return result

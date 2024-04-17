@@ -1,7 +1,8 @@
 comments = r'[/][/].*|[/][*](.|\n)*?[*][/]'
 program = expression EOF
 expression = multiplicative (('+' / '-') multiplicative)*
-multiplicative = primary (('*' / '/' / '%') primary)*
+multiplicative = unary (('*' / '/' / '%') unary)*
+unary = ('+' / '-' / '!')* primary
 primary = decimal / boolean / parenthesis
 decimal = r'\d+'
 boolean = 'true' / 'false'
