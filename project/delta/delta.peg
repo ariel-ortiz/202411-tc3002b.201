@@ -1,9 +1,16 @@
 comments = r'[/][/].*|[/][*](.|\n)*?[*][/]'
-program = expression EOF
+identifier = r'[a-zA-Z]\w*'
+program = statement* expression EOF
+statement = declaration / assignment
+declaration = 'var' decl_variable (',' decl_variable)* ';'
+decl_variable = identifier
+assignment = lhs_variable '=' expression ';'
+lhs_variable = identifier
 expression = multiplicative (('+' / '-') multiplicative)*
 multiplicative = unary (('*' / '/' / '%') unary)*
 unary = ('+' / '-' / '!')* primary
-primary = decimal / boolean / parenthesis
+primary = decimal / boolean / parenthesis / rhs_variable
 decimal = r'\d+'
 boolean = 'true' / 'false'
 parenthesis = '(' expression ')'
+rhs_variable = identifier
