@@ -35,6 +35,19 @@ class CodeGenerationVisitor(PTNodeVisitor):
     def visit_assignment(self, node, children):
         return children[1] + children[0]
 
+    def visit_if(self, node, children):
+        result = (children[0]
+                  + '    if\n'
+                  + children[1])
+        if len(children) == 3:
+            result += ('    else\n'
+                       + children[2])
+        result += '    end\n'
+        return result
+
+    def visit_block(self, node, children):
+        return ''.join(children)
+
     def visit_lhs_variable(self, node, children):
         name = node.value
         return f'    local.set ${name}\n'
